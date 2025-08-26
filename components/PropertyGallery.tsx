@@ -44,7 +44,7 @@ export default function PropertyGallery({ photos, propertyTitle }: PropertyGalle
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-2 h-96">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-2 h-96 mb-6">
         {/* Main Image */}
         <div className="md:col-span-2 md:row-span-2">
           <img
