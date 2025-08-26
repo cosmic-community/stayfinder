@@ -48,7 +48,7 @@ export default function PropertyGallery({ photos, propertyTitle }: PropertyGalle
         {/* Main Image */}
         <div className="md:col-span-2 md:row-span-2">
           <img
-            src={`${photos[0].imgix_url}?w=800&h=600&fit=crop&auto=format,compress`}
+            src={`${photos[0]?.imgix_url}?w=800&h=600&fit=crop&auto=format,compress`}
             alt={`${propertyTitle} - Main view`}
             className="w-full h-full object-cover rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
             onClick={() => openLightbox(0)}
@@ -61,7 +61,7 @@ export default function PropertyGallery({ photos, propertyTitle }: PropertyGalle
         {photos.slice(1, 5).map((photo, index) => (
           <div key={index} className="relative">
             <img
-              src={`${photo.imgix_url}?w=400&h=300&fit=crop&auto=format,compress`}
+              src={`${photo?.imgix_url}?w=400&h=300&fit=crop&auto=format,compress`}
               alt={`${propertyTitle} - View ${index + 2}`}
               className="w-full h-full object-cover rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
               onClick={() => openLightbox(index + 1)}
@@ -84,11 +84,11 @@ export default function PropertyGallery({ photos, propertyTitle }: PropertyGalle
       </div>
 
       {/* Lightbox */}
-      {selectedImage !== null && (
+      {selectedImage !== null && photos[selectedImage] && (
         <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
           <div className="relative max-w-4xl max-h-full">
             <img
-              src={`${photos[selectedImage].imgix_url}?w=1200&h=800&fit=crop&auto=format,compress`}
+              src={`${photos[selectedImage]?.imgix_url}?w=1200&h=800&fit=crop&auto=format,compress`}
               alt={`${propertyTitle} - View ${selectedImage + 1}`}
               className="max-w-full max-h-full object-contain"
               width={600}

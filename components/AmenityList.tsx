@@ -6,7 +6,7 @@ import {
   Dumbbell, 
   Wind, 
   Flame, 
-  WashingMachine,
+  Shirt,
   UtensilsCrossed,
   Snowflake
 } from 'lucide-react'
@@ -23,7 +23,7 @@ const amenityIcons: Record<string, JSX.Element> = {
   'Gym': <Dumbbell className="w-5 h-5" />,
   'Air Conditioning': <Snowflake className="w-5 h-5" />,
   'Heating': <Flame className="w-5 h-5" />,
-  'Washer': <WashingMachine className="w-5 h-5" />,
+  'Washer': <Shirt className="w-5 h-5" />,
   'Dryer': <Wind className="w-5 h-5" />,
   'Hot Tub': <Waves className="w-5 h-5" />,
 }
