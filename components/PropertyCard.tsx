@@ -47,13 +47,38 @@ export default function PropertyCard({ property }: PropertyCardProps) {
               </span>
             </div>
           )}
+
+          {/* Bottom Stats Overlay */}
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-4">
+            <div className="flex items-center justify-between text-white text-sm">
+              <div className="flex items-center space-x-4">
+                <div className="flex items-center bg-black/30 rounded-full px-2 py-1">
+                  <Users className="w-3 h-3 mr-1" />
+                  <span className="text-xs font-medium">{property.metadata.max_guests}</span>
+                </div>
+                <div className="flex items-center bg-black/30 rounded-full px-2 py-1">
+                  <Bed className="w-3 h-3 mr-1" />
+                  <span className="text-xs font-medium">{property.metadata.bedrooms}</span>
+                </div>
+                <div className="flex items-center bg-black/30 rounded-full px-2 py-1">
+                  <Bath className="w-3 h-3 mr-1" />
+                  <span className="text-xs font-medium">{property.metadata.bathrooms}</span>
+                </div>
+              </div>
+              
+              {/* Property Type Label */}
+              <div className="text-xs font-medium text-white/80">
+                {property.metadata.property_type.value}
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Property Details */}
-        <div className="p-4">
+        <div className="p-5">
           {/* Location */}
           {location && (
-            <div className="flex items-center text-gray-500 text-sm mb-2">
+            <div className="flex items-center text-gray-500 text-sm mb-3">
               <MapPin className="w-4 h-4 mr-1" />
               <span>
                 {location.metadata.city}, {location.metadata.state_province}
@@ -62,30 +87,14 @@ export default function PropertyCard({ property }: PropertyCardProps) {
           )}
 
           {/* Property Title */}
-          <h3 className="font-semibold text-gray-900 text-lg mb-2 line-clamp-2 group-hover:text-primary-600 transition-colors">
+          <h3 className="font-semibold text-gray-900 text-lg mb-3 line-clamp-2 group-hover:text-primary-600 transition-colors">
             {property.metadata.property_title}
           </h3>
 
-          {/* Property Stats */}
-          <div className="flex items-center space-x-4 text-gray-500 text-sm mb-3">
-            <div className="flex items-center">
-              <Users className="w-4 h-4 mr-1" />
-              <span>{property.metadata.max_guests} guests</span>
-            </div>
-            <div className="flex items-center">
-              <Bed className="w-4 h-4 mr-1" />
-              <span>{property.metadata.bedrooms} bed</span>
-            </div>
-            <div className="flex items-center">
-              <Bath className="w-4 h-4 mr-1" />
-              <span>{property.metadata.bathrooms} bath</span>
-            </div>
-          </div>
-
-          {/* Price */}
-          <div className="flex items-center justify-between">
+          {/* Price and Availability */}
+          <div className="flex items-center justify-between pt-2">
             <div>
-              <span className="text-xl font-bold text-gray-900">
+              <span className="text-2xl font-bold text-gray-900">
                 ${property.metadata.price_per_night}
               </span>
               <span className="text-gray-500 text-sm"> / night</span>
@@ -94,11 +103,11 @@ export default function PropertyCard({ property }: PropertyCardProps) {
             {/* Availability Badge */}
             <div className="flex items-center">
               {property.metadata.available ? (
-                <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-medium">
+                <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-medium">
                   Available
                 </span>
               ) : (
-                <span className="bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-medium">
+                <span className="bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs font-medium">
                   Unavailable
                 </span>
               )}
